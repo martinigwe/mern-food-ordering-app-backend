@@ -4,7 +4,7 @@ import "dotenv/config";
 import mongoose from "mongoose";
 import myUserRoute from "./routes/MyUserRoute"
 import {v2 as cloudinary} from "cloudinary"
-import myRestuarantRoute from "./routes/MyRestaurantRoute"
+import myRestaurantRoute from "./routes/MyRestaurantRoute"
 import RestaurantRouter from "./routes/RestaurantRoute"
 import orderRoute from "./routes/OrderRoute"
 
@@ -30,7 +30,7 @@ app.get("/health", async (req: Request, res: Response) => {
 });
 
 app.use("/api/my/user", myUserRoute );
-app.use("/api/my/restaurant", myRestuarantRoute)
+app.use("/api/my/restaurant", myRestaurantRoute)
 app.use("/api/restaurant", RestaurantRouter)
 app.use("/api/order", orderRoute)
 

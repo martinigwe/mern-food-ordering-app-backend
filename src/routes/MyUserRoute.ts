@@ -12,3 +12,5 @@ router.put("/",jwtCheck,jwtParse,validateMyUserRequest, MyUserController.updateC
 
 export default router;
 
+
+

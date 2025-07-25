@@ -1,12 +1,12 @@
 import { error } from "console";
 import { Request, Response } from "express";
-import Restuarant from "../models/restuarant";
+import Restaurant from "../models/restaurant";
 
 const getRestaurant = async(req: Request, res: Response) => {
     try {
         const restaurantId = req.params.restaurantId;
 
-        const restaurant = await Restuarant.findById(restaurantId);
+        const restaurant = await Restaurant.findById(restaurantId);
         if(!restaurant) {
             res.status(404).json({message: "restaurant not found"})
             return;
@@ -32,8 +32,8 @@ const searchRestaurants = async (req: Request, res: Response) => {
         let query: any = {}
 
         query["city"] = new RegExp(city, "i")
-        const cityCheck = await Restuarant.countDocuments(query)
-
+        const cityCheck = await Restaurant.countDocuments(query)
+        // console.log(city, cityCheck)
         if(cityCheck == 0) {
             res.status(404).json({
                 data: [],
@@ -59,8 +59,8 @@ const searchRestaurants = async (req: Request, res: Response) => {
         const pageSize = 10;
         const skip = (page-1)* pageSize;
 
-        const restaurants = await Restuarant.find(query).sort({[sortOption]: 1}).skip(skip).limit(pageSize).lean();
-        const total = await Restuarant.countDocuments(query)
+        const restaurants = await Restaurant.find(query).sort({[sortOption]: 1}).skip(skip).limit(pageSize).lean();
+        const total = await Restaurant.countDocuments(query)
         
         const response = {
             data: restaurants,

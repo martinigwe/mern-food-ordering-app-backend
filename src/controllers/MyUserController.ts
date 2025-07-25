@@ -61,6 +61,8 @@ const updateCurrentUser = async(req:Request, res:Response) => {
 
 export default {createCurrentUser, updateCurrentUser, getCurrentUser}
 
+
+
 // import { RequestHandler } from "express";
 // import User from "../models/user";
 
